@@ -7,7 +7,7 @@ const TodoGroup = (props) => {
 
   return (
     <div className="todoGroup">
-      { todoItems.map(todoItem => (<TodoItem className="todoItem" item={todoItem} key={todoItem.id}/>)) }
+      { todoItems.map(todoItem => (<TodoItem item={todoItem} key={todoItem.id}/>)) }
     </div>
   )
 }

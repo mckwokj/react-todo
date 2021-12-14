@@ -8,10 +8,12 @@
 }
 
 .todoItemDetail {
+  flex-grow: 1;
 }
 
 .todoItemDoneDetail {
   text-decoration: line-through 2px;
+  flex-grow: 1;
 }
 
 .todoListTitle {
@@ -31,14 +33,18 @@
   background-color: #1990ff;
   border-color: #1990ff;
   color: white;
+  cursor: pointer;
 }
 
 .generatorButton:disabled {
   background-color: gray;
   border-color: gray;
+  cursor: default;
 }
 
 .todoItem {
+  display: flex;
+  flex-direction: row;
   border: solid 2px;
   width: 700px;
   margin: 10px auto;
@@ -47,5 +53,11 @@
 }
 
 .todoItemDeleteBtn {
-  margin: auto auto;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

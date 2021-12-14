@@ -16,7 +16,7 @@ const TodoItem = (props) => {
   return (
     <div className="todoItem" onClick={onTodoItemClick}>
       <span className={props.item.done === true ? "todoItemDoneDetail" : "todoItemDetail"}>{props.item.text}</span>
-      <button className="todoItemDeleteBtn" onClick={onDeleteButtonClick}>x</button>
+      <button className="todoItemDeleteBtn" onClick={onDeleteButtonClick}>❌</button>
     </div>
   )
 }
