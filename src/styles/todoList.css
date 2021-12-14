@@ -1,10 +1,7 @@
-.todoListTitle {
-  font-size: 20px;
-}
-
 .generatorInput {
   margin-right: 10px;
-  height: 20px
+  height: 20px;
+  width: 300px;
 }
 
 .todoItemDetail {
@@ -17,7 +14,7 @@
 }
 
 .todoListTitle {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .generatorButton {
