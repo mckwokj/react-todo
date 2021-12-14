@@ -8,9 +8,10 @@ const TodoGenerator = (props) => {
 
 
   const onGeneratorInputChange = (event) => {
-    setDetail(event.target.value)
+    const inputValue = event.target.value
+    setDetail(inputValue)
 
-    if (event.target.value.length > 0) {
+    if (inputValue.length > 0) {
       setIsDisabled(false)
     }
   }
