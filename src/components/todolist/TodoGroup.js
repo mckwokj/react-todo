@@ -1,15 +1,13 @@
-import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 
 const TodoGroup = (props) => {
 
-  const todoItems = useMemo(() => (
-    props.values.map((itemValue, index) => (<TodoItem className="todoItem" value={itemValue} key={itemValue+index} />))
-  ), [props.values])
+  const todoItems = useSelector(state => state.todoItems)
 
   return (
     <div className="todoGroup">
-      { todoItems }
+      { todoItems.map(todoItem => (<TodoItem className="todoItem" item={todoItem} key={todoItem.id}/>)) }
     </div>
   )
 }

@@ -8,11 +8,10 @@
 }
 
 .todoItemDetail {
-  border: solid 2px;
-  width: 700px;
-  margin: 10px auto;
-  padding: 10px 5px;
-  text-align: left;
+}
+
+.todoItemDoneDetail {
+  text-decoration: line-through 2px;
 }
 
 .todoListTitle {
@@ -39,3 +38,14 @@
   border-color: gray;
 }
 
+.todoItem {
+  border: solid 2px;
+  width: 700px;
+  margin: 10px auto;
+  padding: 10px 5px;
+  text-align: left;
+}
+
+.todoItemDeleteBtn {
+  margin: auto auto;
+}

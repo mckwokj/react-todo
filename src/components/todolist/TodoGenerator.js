@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { CREATE_TODO_ITEM } from "../../constants/constants";
+import { v4 as uuidv4 } from "uuid";
+
 
 const TodoGenerator = (props) => {
 
@@ -6,6 +10,7 @@ const TodoGenerator = (props) => {
 
   const [isDisabled, setIsDisabled] = useState(true)
 
+  const dispatch = useDispatch()
 
   const onGeneratorInputChange = (event) => {
     const inputValue = event.target.value
@@ -14,7 +19,7 @@ const TodoGenerator = (props) => {
   }
 
   const onGeneratorButtonClick = () => {
-    props.onGeneratorChange(detail)
+    dispatch({type: CREATE_TODO_ITEM, payload: {id: uuidv4(), text: detail, done: false}})
     setDetail("")
     setIsDisabled(true)
   }
