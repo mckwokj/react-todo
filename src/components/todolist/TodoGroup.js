@@ -9,7 +9,7 @@ const TodoGroup = (props) => {
 
   return (
     <div className="todoGroup">
-      {todoItems}
+      { todoItems }
     </div>
   )
 }

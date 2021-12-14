@@ -13,6 +13,8 @@ const TodoGenerator = (props) => {
 
     if (inputValue.length > 0) {
       setIsDisabled(false)
+    } else {
+      setIsDisabled(true)
     }
   }
 
