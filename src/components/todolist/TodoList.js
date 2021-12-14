@@ -3,7 +3,7 @@ import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
 
 const TodoList = () => {
-  const [itemDetails, setItemDetails] = useState(() => [])
+  const [itemDetails, setItemDetails] = useState([])
 
   const onGeneratorChange = (itemValue) => {
     setItemDetails([...itemDetails, itemValue])
