@@ -10,12 +10,7 @@ const TodoGenerator = (props) => {
   const onGeneratorInputChange = (event) => {
     const inputValue = event.target.value
     setDetail(inputValue)
-
-    if (inputValue.length > 0) {
-      setIsDisabled(false)
-    } else {
-      setIsDisabled(true)
-    }
+    setIsDisabled(inputValue.length === 0)
   }
 
   const onGeneratorButtonClick = () => {

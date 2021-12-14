@@ -34,3 +34,8 @@
   color: white;
 }
 
+.generatorButton:disabled {
+  background-color: gray;
+  border-color: gray;
+}
+
