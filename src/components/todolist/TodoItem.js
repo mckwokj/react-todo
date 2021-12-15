@@ -20,12 +20,23 @@ const TodoItem = (props) => {
       dispatch({type: DELETE_TODO_ITEM_STATUS, payload: response.data})
     })
   }
+
+  const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
+  const onTodoItemEdit = () => {
+    setIsModalVisible(true)
+  }
   
   return (
     <div className="todoItem">
       <span className={done ? "todoItemDoneDetail" : "todoItemDetail"}  onClick={onTodoItemClick}>{text}</span>
       <DeleteFilled style={{color: '#cf1322', fontSize: '20px'}} onClick={onDeleteButtonClick}/>
-      
+      <EditOutlined style={{fontSize: '20px'}} onClick={onTodoItemEdit}/>
+      <Modal title="Change todo item content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <Input placeholder="Please type in new todo item..." onChange={onModalInputChange}/>
+      </Modal>
     </div>
   )
 }
