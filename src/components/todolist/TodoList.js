@@ -3,8 +3,8 @@ import TodoGroup from "./TodoGroup";
 
 const TodoList = () => {
   return (
-    <div>
-      <span className="todoListTitle">Todo List</span>
+    <div className="todoList">
+      <p className="todoListTitle">Todo List</p>
       <TodoGroup/>
       <TodoGenerator/>
     </div>
