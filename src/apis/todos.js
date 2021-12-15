@@ -4,6 +4,6 @@ export const getTodos = () => api.get("/todos");
 
 export const addTodoItem = (todoItem) => api.post("/todos", todoItem);
 
-export const updateTodo = (id, done) => api.put(`/todos/${id}`, { done: done })
+export const updateTodo = (id, todoItem) => api.put(`/todos/${id}`, todoItem)
 
 export const deleteTodo = (id) => api.delete(`/todos/${id}`)
