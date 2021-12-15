@@ -19,7 +19,7 @@ function App() {
                   <Link to="/doneList">Done</Link>
                 </li>
                 <li>
-                  <Link to="/undoneList">Undo</Link>
+                  <Link to="/undoneList">Undone</Link>
                 </li>
               </ul>
             </nav>
