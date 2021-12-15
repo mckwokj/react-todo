@@ -9,6 +9,11 @@ const TodoItem = (props) => {
 
   const dispatch = useDispatch()
 
+  const onModalInputChange = (event) => {
+    const inputValue = event.target.value
+    setModalText(inputValue)
+  }
+
   const onTodoItemClick = () => {
     updateTodo(id, !done).then((response) => {
       dispatch({type: UPDATE_TODO_ITEM_STATUS, payload: response.data})
