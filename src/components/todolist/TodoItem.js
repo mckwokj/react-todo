@@ -24,6 +24,7 @@ const TodoItem = (props) => {
   const onTodoItemClick = () => {
     updateTodo(id, {...props.item, done: !done}).then((response) => {
       dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
+      response.data.done ? message.success('Todo item done.') : message.success('Todo item undone.')
     })
   }
 
