@@ -17,22 +17,6 @@
   font-size: 30px;
 }
 
-.generatorButton {
-  padding:0.35em 1.2em;
-  display:inline-block;
-  margin:0 0.3em 0.3em 0;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  text-align:center;
-  transition: all 0.2s;
-  background-color: #1990ff;
-  border-color: #1990ff;
-  color: white;
-  cursor: pointer;
-}
-
 .generatorButton:disabled {
   background-color: gray;
   border-color: gray;
@@ -47,16 +31,6 @@
   margin: 10px auto;
   padding: 10px 5px;
   text-align: left;
-}
-
-.todoItemDeleteBtn {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
 }
 
 .navList {

@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
+import { deleteTodo, updateTodo } from "../../apis/todos";
 import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM_STATUS } from "../../constants/constants";
+import { DeleteFilled } from '@ant-design/icons';
 
 const TodoItem = (props) => {
 
@@ -8,17 +10,22 @@ const TodoItem = (props) => {
   const dispatch = useDispatch()
 
   const onTodoItemClick = () => {
-    dispatch({type: UPDATE_TODO_ITEM_STATUS, payload: {id: id, done: !done }})
+    updateTodo(id, !done).then((response) => {
+      dispatch({type: UPDATE_TODO_ITEM_STATUS, payload: response.data})
+    })
   }
 
   const onDeleteButtonClick = () => {
-    dispatch({type: DELETE_TODO_ITEM_STATUS, payload: {id: id}})
+    deleteTodo(id).then((response) => {
+      dispatch({type: DELETE_TODO_ITEM_STATUS, payload: response.data})
+    })
   }
   
   return (
-    <div className="todoItem" onClick={onTodoItemClick}>
-      <span className={done ? "todoItemDoneDetail" : "todoItemDetail"}>{text}</span>
-      <button className="todoItemDeleteBtn" onClick={onDeleteButtonClick}>❌</button>
+    <div className="todoItem">
+      <span className={done ? "todoItemDoneDetail" : "todoItemDetail"}  onClick={onTodoItemClick}>{text}</span>
+      <DeleteFilled style={{color: '#cf1322', fontSize: '20px'}} onClick={onDeleteButtonClick}/>
+      
     </div>
   )
 }

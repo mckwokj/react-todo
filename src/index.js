@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from '@reduxjs/toolkit';
 import todoReducer from './reducers/todoReducer';
+import 'antd/dist/antd.css';
 
 const store = createStore(todoReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

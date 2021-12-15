@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CREATE_TODO_ITEM } from "../../constants/constants";
-import { v4 as uuidv4 } from "uuid";
+import { addTodoItem } from "../../apis/todos";
+import { Button } from "antd";
 
 
 const TodoGenerator = () => {
@@ -16,14 +17,16 @@ const TodoGenerator = () => {
   }
 
   const onGeneratorButtonClick = () => {
-    dispatch({type: CREATE_TODO_ITEM, payload: {id: uuidv4(), text: detail, done: false}})
+    addTodoItem({ text: detail, done: false}).then((response) => {
+      dispatch({type: CREATE_TODO_ITEM, payload: response.data})
+    })
     setDetail("")
   }
 
   return (
     <div>
       <input className="generatorInput" onChange={onGeneratorInputChange} value={detail}/>
-      <button className="generatorButton" onClick={onGeneratorButtonClick} disabled={detail.length === 0}>add</button>
+      <Button type="primary" className="generatorButton" onClick={onGeneratorButtonClick} disabled={detail.length === 0}>add</Button>
     </div>
   )
 }
