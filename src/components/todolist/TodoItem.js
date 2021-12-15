@@ -21,6 +21,13 @@ const TodoItem = (props) => {
     })
   }
 
+  const handleOk = () => {
+    updateTodo(id, {...props.item, text: modalText}).then((response) => {
+      dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
+      setIsModalVisible(false)
+    })
+  }
+
   const handleCancel = () => {
     setIsModalVisible(false)
   }
