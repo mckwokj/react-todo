@@ -31,6 +31,7 @@ const TodoItem = (props) => {
   const onDeleteButtonClick = () => {
     deleteTodo(id).then((response) => {
       dispatch({type: DELETE_TODO_ITEM_STATUS, payload: response.data})
+      message.success('Deleted todo item.');
     })
   }
 
