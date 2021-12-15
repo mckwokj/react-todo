@@ -4,7 +4,8 @@ import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM } from "../../constants/const
 import { DeleteFilled, EditOutlined} from '@ant-design/icons';
 import Modal from "antd/lib/modal/Modal";
 import { useState } from "react";
-import { Input } from "antd";
+import { Input, message, Popconfirm } from "antd";
+import TextArea from "antd/lib/input/TextArea";
 
 const TodoItem = (props) => {
 
@@ -63,8 +64,8 @@ const TodoItem = (props) => {
         <DeleteFilled style={{color: '#cf1322', fontSize: '20px'}}/>
       </Popconfirm>
       <EditOutlined style={{fontSize: '20px'}} onClick={onTodoItemEdit}/>
-      <Modal title="Change todo item content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <Input placeholder="Please type in new todo item..." onChange={onModalInputChange}/>
+      <Modal title="Change todo item content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okButtonProps={{ disabled: modalText.length === 0 }}>
+        <TextArea placeholder="Please type in new todo item..." onChange={onModalInputChange} rows={2} />
       </Modal>
     </div>
   )
