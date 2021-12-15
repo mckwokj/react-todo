@@ -3,19 +3,21 @@ import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM_STATUS } from "../../constant
 
 const TodoItem = (props) => {
 
+  const {id, done, text} = props.item
+
   const dispatch = useDispatch()
 
   const onTodoItemClick = () => {
-    dispatch({type: UPDATE_TODO_ITEM_STATUS, payload: {id: props.item.id, done: !props.item.done }})
+    dispatch({type: UPDATE_TODO_ITEM_STATUS, payload: {id: id, done: !done }})
   }
 
   const onDeleteButtonClick = () => {
-    dispatch({type: DELETE_TODO_ITEM_STATUS, payload: {id: props.item.id}})
+    dispatch({type: DELETE_TODO_ITEM_STATUS, payload: {id: id}})
   }
   
   return (
     <div className="todoItem" onClick={onTodoItemClick}>
-      <span className={props.item.done === true ? "todoItemDoneDetail" : "todoItemDetail"}>{props.item.text}</span>
+      <span className={done ? "todoItemDoneDetail" : "todoItemDetail"}>{text}</span>
       <button className="todoItemDeleteBtn" onClick={onDeleteButtonClick}>❌</button>
     </div>
   )

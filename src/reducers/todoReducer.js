@@ -21,4 +21,3 @@ const todoReducer = (state = initState, action) => {
 };
 
 export default todoReducer;
-
