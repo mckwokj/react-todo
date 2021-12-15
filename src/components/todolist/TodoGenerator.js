@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CREATE_TODO_ITEM } from "../../constants/constants";
 import { addTodoItem } from "../../apis/todos";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 
 const TodoGenerator = () => {
@@ -21,6 +21,7 @@ const TodoGenerator = () => {
       dispatch({type: CREATE_TODO_ITEM, payload: response.data})
     })
     setDetail("")
+    message.success('Created todo item.');
   }
 
   return (
