@@ -1,11 +1,18 @@
 import { useDispatch } from "react-redux";
 import { deleteTodo, updateTodo } from "../../apis/todos";
-import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM_STATUS } from "../../constants/constants";
-import { DeleteFilled } from '@ant-design/icons';
+import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM } from "../../constants/constants";
+import { DeleteFilled, EditOutlined} from '@ant-design/icons';
+import Modal from "antd/lib/modal/Modal";
+import { useState } from "react";
+import { Input } from "antd";
 
 const TodoItem = (props) => {
 
   const {id, done, text} = props.item
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [modalText, setModalText] = useState("")
 
   const dispatch = useDispatch()
 
@@ -15,8 +22,8 @@ const TodoItem = (props) => {
   }
 
   const onTodoItemClick = () => {
-    updateTodo(id, !done).then((response) => {
-      dispatch({type: UPDATE_TODO_ITEM_STATUS, payload: response.data})
+    updateTodo(id, {...props.item, done: !done}).then((response) => {
+      dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
     })
   }
 
