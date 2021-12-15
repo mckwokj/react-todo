@@ -39,6 +39,7 @@ const TodoItem = (props) => {
     updateTodo(id, {...props.item, text: modalText}).then((response) => {
       dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
       setIsModalVisible(false)
+      message.success('Updated todo item content.');
     })
   }
 
