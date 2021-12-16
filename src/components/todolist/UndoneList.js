@@ -5,7 +5,7 @@ const UndoneList = () => {
   const todoItems = useSelector((state) => state.todoItems.filter(todoItem => todoItem.done === false))
 
   return (
-    <div className="todoList">
+    <div className="doneUndoneList">
       <p className="todoListTitle">Undone List</p>
         {
           todoItems.length === 0 

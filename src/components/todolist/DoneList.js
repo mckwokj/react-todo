@@ -1,4 +1,4 @@
-import { List, Typography } from "antd"
+import { List } from "antd"
 import { useSelector } from "react-redux"
 
 const DoneList = () => {
@@ -6,7 +6,7 @@ const DoneList = () => {
   const todoItems = useSelector((state) => state.todoItems.filter(todoItem => todoItem.done === true))
 
   return (
-    <div className="todoList">
+    <div className="doneUndoneList">
       <p className="todoListTitle">Done List</p>
       {
         todoItems.length === 0 
