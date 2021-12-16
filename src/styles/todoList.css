@@ -17,12 +17,6 @@
   font-size: 30px;
 }
 
-.generatorButton:disabled {
-  background-color: gray;
-  border-color: gray;
-  cursor: default;
-}
-
 .todoItem {
   display: flex;
   flex-direction: row;
