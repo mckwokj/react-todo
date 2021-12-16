@@ -4,7 +4,7 @@ import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM } from "../../constants/const
 import { DeleteFilled, EditOutlined} from '@ant-design/icons';
 import Modal from "antd/lib/modal/Modal";
 import { useState } from "react";
-import { Input, message, Popconfirm } from "antd";
+import { message, Popconfirm } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 
 const TodoItem = (props) => {

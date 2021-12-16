@@ -39,7 +39,7 @@
   padding: 0;
 }
 
-li {
+.navBar li {
   float: left;
   display: block;
   color: white;
@@ -54,4 +54,9 @@ li {
 }
 .todoItemMessage {
   font-weight: bold;
+}
+
+.todoList {
+  margin: auto auto;
+  width: 500px
 }
