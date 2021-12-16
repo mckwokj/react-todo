@@ -1,11 +1,11 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, updateTodo } from "../../apis/todos";
-import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM } from "../../constants/constants";
+import { message, Popconfirm } from "antd";
 import { DeleteFilled, EditOutlined} from '@ant-design/icons';
 import Modal from "antd/lib/modal/Modal";
-import { useState } from "react";
-import { message, Popconfirm } from "antd";
 import TextArea from "antd/lib/input/TextArea";
+import { deleteTodo, updateTodo } from "../../apis/todos";
+import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM } from "../../constants/constants";
 
 const TodoItem = (props) => {
 
@@ -17,6 +17,11 @@ const TodoItem = (props) => {
 
   const dispatch = useDispatch()
 
+  const TODO_ITEM_DONE = 'Todo item done.';
+  const TODO_ITEM_UNDONE = 'Todo item undone.'
+  const TODO_ITEM_DELETE = 'Deleted todo item.'
+  const TODO_ITEM_UPDATE = 'Updated todo item content.'
+
   const onModalInputChange = (event) => {
     const inputValue = event.target.value
     setModalText(inputValue)
@@ -25,14 +30,14 @@ const TodoItem = (props) => {
   const onTodoItemClick = () => {
     updateTodo(id, {...props.item, done: !done}).then((response) => {
       dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
-      response.data.done ? message.success('Todo item done.') : message.success('Todo item undone.')
+      response.data.done ? message.success(TODO_ITEM_DONE) : message.success(TODO_ITEM_UNDONE)
     })
   }
 
   const onDeleteButtonClick = () => {
     deleteTodo(id).then((response) => {
       dispatch({type: DELETE_TODO_ITEM_STATUS, payload: response.data})
-      message.success('Deleted todo item.');
+      message.success(TODO_ITEM_DELETE); // Todo: Constants
     })
   }
 
@@ -40,7 +45,7 @@ const TodoItem = (props) => {
     updateTodo(id, {...props.item, text: modalText}).then((response) => {
       dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
       setIsModalVisible(false)
-      message.success('Updated todo item content.');
+      message.success(TODO_ITEM_UPDATE);
     })
   }
 
@@ -61,9 +66,10 @@ const TodoItem = (props) => {
         okText="Yes"
         cancelText="No"
       >
-        <DeleteFilled style={{color: '#cf1322', fontSize: '20px'}}/>
+        <DeleteFilled style={{color: '#cf1322', fontSize: '20px'}}/> 
       </Popconfirm>
       <EditOutlined style={{fontSize: '20px'}} onClick={onTodoItemEdit}/>
+
       <Modal title="Change todo item content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okButtonProps={{ disabled: modalText.length === 0 }}>
         <TextArea placeholder="Please type in new todo item..." onChange={onModalInputChange} rows={2} />
       </Modal>
