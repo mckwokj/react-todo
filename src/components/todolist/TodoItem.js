@@ -4,8 +4,8 @@ import { message, Popconfirm } from "antd";
 import { DeleteFilled, EditOutlined} from '@ant-design/icons';
 import Modal from "antd/lib/modal/Modal";
 import TextArea from "antd/lib/input/TextArea";
-import { deleteTodo, updateTodo } from "../../apis/todos";
-import { DELETE_TODO_ITEM_STATUS, UPDATE_TODO_ITEM } from "../../constants/constants";
+import { deleteTodo, getTodos, updateTodo } from "../../apis/todos";
+import { INIT_TODO, UPDATE_TODO_ITEM } from "../../constants/constants";
 
 const TodoItem = (props) => {
 
@@ -28,23 +28,23 @@ const TodoItem = (props) => {
   }
 
   const onTodoItemClick = () => {
-    updateTodo(id, {...props.item, done: !done}).then((response) => {
+    updateTodo(id, {...props.item, done: !done}).then(response => {
       dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
       response.data.done ? message.success(TODO_ITEM_DONE) : message.success(TODO_ITEM_UNDONE)
     })
   }
 
   const onDeleteButtonClick = () => {
-    deleteTodo(id).then((response) => {
-      if (response.status === 204) {
-        dispatch({type: DELETE_TODO_ITEM_STATUS, payload: {id: id}})
+    deleteTodo(id).then(() => {
+      getTodos().then(response => {
+        dispatch({type: INIT_TODO, payload: response.data})
         message.success(TODO_ITEM_DELETE);
-      }
+      })
     })
   }
 
   const handleOk = () => {
-    updateTodo(id, {...props.item, text: modalText}).then((response) => {
+    updateTodo(id, {...props.item, text: modalText}).then(response => {
       dispatch({type: UPDATE_TODO_ITEM, payload: response.data})
       setIsModalVisible(false)
       message.success(TODO_ITEM_UPDATE);
