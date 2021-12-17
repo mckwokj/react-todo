@@ -36,8 +36,10 @@ const TodoItem = (props) => {
 
   const onDeleteButtonClick = () => {
     deleteTodo(id).then((response) => {
-      dispatch({type: DELETE_TODO_ITEM_STATUS, payload: response.data})
-      message.success(TODO_ITEM_DELETE); // Todo: Constants
+      if (response.status === 204) {
+        dispatch({type: DELETE_TODO_ITEM_STATUS, payload: {id: id}})
+        message.success(TODO_ITEM_DELETE);
+      }
     })
   }
 
